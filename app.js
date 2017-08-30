@@ -51,3 +51,14 @@ var airForceOnes = new Shoe('nike', 2, 11, 'white')
 airForceOnes.brand // => nike
 
 // create a computer constructor function with 4 properties.
+
+function Computer (brand, year, size) {
+  this.brand = brand
+  this.color = 'green'
+  this.year = year
+  this.size = size
+  this.isOn = false
+  this.turnOn = function () {
+    this.isOn = !this.isOn
+  }
+}
