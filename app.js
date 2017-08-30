@@ -58,7 +58,77 @@ function Computer (brand, year, size) {
   this.year = year
   this.size = size
   this.isOn = false
-  this.turnOn = function () {
-    this.isOn = !this.isOn
+  // this.turnOn = function () {
+  //
+  // }
+}
+Computer.prototype.turnOn = function () {
+  this.isOn = !this.isOn
+}
+Computer.prototype.memory = '256'
+// Built in methods for Arrays and Objects
+
+var names = [ 'tony', 'mike', 'jessica', 'joe', 'chris']
+
+// forEach
+brianEach(names, function (element, index) {
+  console.log(element)
+})
+// tony
+// mike
+// jessica
+// joe
+// chris
+
+function brianEach (arr, cb) {
+  if (typeof arr === 'array') {
+    for (var i = 0; i < arr.length; i++) {
+      cb(arr[i], i)
+    }
+  } else {
+    return new Error('hey bro send me an array')
   }
+}
+
+Array.prototype.tonyEach = function (cb) {
+  for (var i = 0; i < this.length; i++) {
+    cb(this[i], i)
+  }
+}
+
+var names = [ 'tony', 'mike', 'jessica', 'joe', 'chris']
+// lets re-create filter
+
+names.filter(function cb (element, index) {
+  return element[0] === 'j'
+})
+
+Array.prototype.tonyFilter = function (goblygoop) {
+  var newArray = []
+  for (var i = 0; i < this.length; i++) {
+    if (goblygoop(this[i], i)) {
+      newArray.push(this[i])
+    }
+  }
+  return newArray
+}
+
+// lets re-create reduce
+var numArr = [4, 2, 0]
+function cb (prevValue, currElement) {
+  return prevValue + currElement // 0 + 4
+}
+numArr.reduce(cb)
+
+Array.prototype.reduceMe = function (callback, initialValue) {
+  var prevValue = initialValue || null
+  // if(initialValue) var prevValue = initialValue
+  for (var i = 0; i < this.length; i++) {
+    if (prevValue) {
+      prevValue = callback(prevValue, this[i]) // 4
+    } else {
+      prevValue = this[i]
+    }
+  }
+  return prevValue
 }
